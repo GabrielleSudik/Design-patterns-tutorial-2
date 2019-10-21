@@ -7,3 +7,5 @@ C:\Users\Reynald Adolphe\Desktop\Exercise Files\Ch04\04_02\Begin\Composite\obj\D
 C:\Users\Reynald Adolphe\Desktop\Exercise Files\Ch04\04_02\Begin\Composite\obj\Debug\netcoreapp1.1\Composite.AssemblyInfo.cs
 C:\Users\Reynald Adolphe\Desktop\Exercise Files\Ch04\04_02\Begin\Composite\obj\Debug\netcoreapp1.1\Composite.dll
 C:\Users\Reynald Adolphe\Desktop\Exercise Files\Ch04\04_02\Begin\Composite\obj\Debug\netcoreapp1.1\Composite.pdb
+C:\Users\Gabri\Documents\Tutorials\Design Patterns 2\Ex_Files_\Ex_Files_Intermediate_C_Part1\Exercise Files\Ch04\04_02\Begin\Composite\obj\Debug\netcoreapp1.1\Composite.dll
+C:\Users\Gabri\Documents\Tutorials\Design Patterns 2\Ex_Files_\Ex_Files_Intermediate_C_Part1\Exercise Files\Ch04\04_02\Begin\Composite\obj\Debug\netcoreapp1.1\Composite.pdb

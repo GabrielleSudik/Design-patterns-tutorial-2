@@ -6,3 +6,5 @@ C:\Users\Reynald Adolphe\Desktop\Exercise Files\Ch02\02_03\Begin\Adapter\bin\Deb
 C:\Users\Reynald Adolphe\Desktop\Exercise Files\Ch02\02_03\Begin\Adapter\obj\Debug\netcoreapp1.1\Adapter.AssemblyInfo.cs
 C:\Users\Reynald Adolphe\Desktop\Exercise Files\Ch02\02_03\Begin\Adapter\obj\Debug\netcoreapp1.1\Adapter.dll
 C:\Users\Reynald Adolphe\Desktop\Exercise Files\Ch02\02_03\Begin\Adapter\obj\Debug\netcoreapp1.1\Adapter.pdb
+C:\Users\Gabri\Documents\Tutorials\Design Patterns 2\Ex_Files_\Ex_Files_Intermediate_C_Part1\Exercise Files\Ch03\03_02\Begin\Adapter\obj\Debug\netcoreapp1.1\Adapter.dll
+C:\Users\Gabri\Documents\Tutorials\Design Patterns 2\Ex_Files_\Ex_Files_Intermediate_C_Part1\Exercise Files\Ch03\03_02\Begin\Adapter\obj\Debug\netcoreapp1.1\Adapter.pdb
