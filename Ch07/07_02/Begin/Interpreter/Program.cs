@@ -14,7 +14,28 @@ namespace Interpreter.Demonstration
     {
         static void Main()
         {
-            // TODO
+            //this code is added after all of the other classes below.
+
+            string roman = "MMXVII";
+            Context context = new Context(roman); //start the translator
+
+            //build the 'parse tree'
+            List<Expression> tree = new List<Expression>();
+            tree.Add(new ThousandExpression());
+            tree.Add(new HundredExpression());
+            tree.Add(new TenExpression());
+            tree.Add(new OneExpression());
+
+            //interpret
+            foreach (Expression expression in tree)
+            {
+                expression.Interpret(context);
+            }
+
+            Console.WriteLine($"{roman} = {context.Output}");
+
+            //pause screen:
+            Console.ReadLine();
         }
     }
 
@@ -23,8 +44,8 @@ namespace Interpreter.Demonstration
     /// </summary>
     class Context
     {
-        private string _input;
-        private int _output;
+        private string _input; //takes in a roman numeral
+        private int _output; //out puts a decimal
 
         // Constructor
         public Context(string input)
@@ -50,6 +71,9 @@ namespace Interpreter.Demonstration
     /// <summary>
     /// The 'AbstractExpression' class
     /// </summary>
+    //This is what converts the roman to decimal, abstracted.
+    //It's the general rules for "take this letter and do some math to it"
+    //the exact letters and corresponding multipliers are supplied below.
     abstract class Expression
     {
         public void Interpret(Context context)
@@ -93,6 +117,8 @@ namespace Interpreter.Demonstration
     /// Thousand checks for the Roman Numeral M 
     /// </remarks>
     /// </summary>
+    //This is the concrete blocks put into the Expression
+    //for items in the 1000s space.
     class ThousandExpression : Expression
     {
         public override string One() { return "M"; }
@@ -108,6 +134,7 @@ namespace Interpreter.Demonstration
     /// Hundred checks C, CD, D or CM
     /// </remarks>
     /// </summary>
+    //Same as above, but for 100s.
     class HundredExpression : Expression
     {
         public override string One() { return "C"; }
