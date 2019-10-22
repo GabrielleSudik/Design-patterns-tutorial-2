@@ -17,7 +17,24 @@ namespace Visitor.Demonstration
     {
         static void Main()
         {
-            // TODO
+            //this block is written last.
+
+            //create a collection of employees:
+            Employees ees = new Employees();
+            ees.Attach(new Clerk());
+            ees.Attach(new Director());
+            ees.Attach(new President());
+
+            //employees are visited:
+            ees.Accept(new IncomeVisitor());
+            ees.Accept(new VacationVisitor());
+
+            Console.ReadLine();
+
+            //run the program, see the income visitor
+            //update everyone's income.
+            //and the vacation visitor update everyone's vacation days.
+            //(ie, run the visitor methods on the Employee classes)
         }
     }
 
@@ -69,6 +86,11 @@ namespace Visitor.Demonstration
     abstract class Element
     {
         public abstract void Accept(IVisitor visitor);
+        //this confuses me -- IVisitor and its concrete classes
+        //have methods that accept an argument of type Element.
+        //but this method, in Element, accepts an argument
+        //of type IVisitor.
+        //what am I missing?
     }
 
     /// <summary>
@@ -110,6 +132,9 @@ namespace Visitor.Demonstration
             set { _vacationDays = value; }
         }
 
+        //when you call Accept on an employee,
+        //the passed in visitor gets to visit and do its thing.
+        //I'm still seeing (incorrectly?) a really circular dependency going on??
         public override void Accept(IVisitor visitor)
         {
             visitor.Visit(this);
@@ -133,6 +158,8 @@ namespace Visitor.Demonstration
             _employees.Remove(employee);
         }
 
+        //allowing a visitor to visit the Employees class.
+        //this specific loop allows a visit to each Employee.
         public void Accept(IVisitor visitor)
         {
             foreach (Employee e in _employees)

@@ -19,15 +19,41 @@ namespace Mediator.Demonstration
         /// </summary>
         static void Main()
         {
+            //This block is written last.
 
-            // TODO
+            //create a chatroom:
+            Chatroom chatroom = new Chatroom();
 
+            //and people in it:
+            Participant eddie = new Actor("Eddie");
+            Participant wally = new Actor("Wally");
+            Participant beaver = new Actor("Beaver");
+            Participant june = new Actor("June");
+            Participant ward = new NonActor("Ward");
+
+            chatroom.Register(eddie);
+            chatroom.Register(wally);
+            chatroom.Register(beaver);
+            chatroom.Register(june);
+            chatroom.Register(ward);
+
+            //have them chat:
+            eddie.Send("Wally", "Lets skip school.");
+            june.Send("Ward", "You were a little hard on the beaver last night.");
+            beaver.Send("Wally", "Awww, man.");
+            beaver.Send("Eddie", "You stink, and you know it.");
+            eddie.Send("June", "You look awfully pretty today, Mrs. CLeaver.");
+
+            //run the program, you'll get a list of the chat messages.
+            //presumably it can be more intricate, like messages
+            //will go right to a recipient, etc.
         }
     }
 
     /// <summary>
     /// The 'Mediator' abstract class
     /// </summary>
+    //two methods here.
     abstract class AbstractChatroom
     {
         public abstract void Register(Participant participant);
@@ -38,6 +64,8 @@ namespace Mediator.Demonstration
     /// <summary>
     /// The 'ConcreteMediator' class
     /// </summary>
+    //The concrete chatroom
+    //Implements the two methods, plus a list of everyone registered.
     class Chatroom : AbstractChatroom
     {
         private Dictionary<string, Participant> _participants =
@@ -68,6 +96,8 @@ namespace Mediator.Demonstration
     /// <summary>
     /// The 'AbstractColleague' class
     /// </summary>
+    //The abstract colleague.
+    //includes two methods to Send and Receive
     class Participant
     {
         private Chatroom _chatroom;
@@ -110,6 +140,9 @@ namespace Mediator.Demonstration
     /// <summary>
     /// A 'ConcreteColleague' class
     /// </summary>
+    //the first concrete colleague class -- actor
+    //note it has Receive but not send
+    //must be because the Participant class is abstract, not interface.
     class Actor : Participant
     {
         // Constructor
@@ -128,6 +161,7 @@ namespace Mediator.Demonstration
     /// <summary>
     /// A 'ConcreteColleague' class
     /// </summary>
+    //The other concrete colleague class.
     class NonActor : Participant
     {
         // Constructor
