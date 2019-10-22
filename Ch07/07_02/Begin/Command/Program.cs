@@ -19,22 +19,27 @@ namespace Command.Demonstration
         /// </summary>
         static void Main()
         {
-            // Create user & let them compute
+            //this block comes after all the setup below.
+
+            //Create user
             User user = new User();
 
-            // Use press calculator buttons
+            //Use press calculator buttons
+            //Compute method is below in User class.
             user.Compute('+', 100);
             user.Compute('-', 50);
             user.Compute('*', 10);
             user.Compute('/', 2);
 
-            // Undo 4 commands
+            //Undo 4 commands
+            //each of the Computes was added to a list of executed commands.
+            //this Undo method appears to be like a quasi pop.
             user.Undo(4);
 
-            // Redo 3 commands
+            //Redo 3 commands
             user.Redo(3);
 
-            // Wait for user
+            //Wait for user
             Console.ReadKey();
 
         }
@@ -43,6 +48,19 @@ namespace Command.Demonstration
     /// <summary>
     /// The 'Command' abstract class
     /// </summary>
+    //Here it's abstract but could be interface.
+    //Defines the two common methods the calculator can do.
+
+    //I do believe: Command class should have only two methods:
+    //do it, and undo it.
+    //aka, execute and unexecute.
+    //aka, "I command you to do this thing!"
+
+    //all other details of HOW it will do/undo
+    //are contained in the implementing class.
+    //presumably, multiple classes can implement this one
+    //and they don't have to be versions of a calculator
+    //so long as they can DO and thing and UNDO a thing.
     abstract class Command
     {
         public abstract void Execute();
@@ -52,6 +70,10 @@ namespace Command.Demonstration
     /// <summary>
     /// The 'ConcreteCommand' class
     /// </summary>
+    //This is the implementation of the Command class
+    //it contains the two methods
+    //and the related properties and methods that the
+    //two common methods will need to actually work.
     class CalculatorCommand : Command
     {
         private char _operator;
@@ -61,6 +83,8 @@ namespace Command.Demonstration
         // Constructor
         public CalculatorCommand(Calculator calculator,
           char @operator, int operand)
+            //fyi "operator" is a C# keyword;
+            //the @ lets the code know this use is NOT a keyword.
         {
             this._calculator = calculator;
             this._operator = @operator;
@@ -167,6 +191,13 @@ namespace Command.Demonstration
             }
         }
 
+        //here in the User class
+        //you see how a Command is created.
+        //we specify its a CalculatorCommand
+        //and pass in the relevant arguments
+        //(both to this method Compute and to
+        //the creation of CalculatorCOmmand.
+        //and then you just say "do it."
         public void Compute(char @operator, int operand)
         {
             // Create command operation and execute it
